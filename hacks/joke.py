@@ -56,6 +56,10 @@ class JokesAPI:
             addJokeBooHoo(id)
             return jsonify(getJoke(id))
 
+    class _ReadWorst(Resource):
+        def get(self):
+            return jsonify(jeeredJoke())
+
     # building RESTapi resources/interfaces, these routes are added to Web Server
     api.add_resource(_Create, '/create/<string:joke>')
     api.add_resource(_Read, '/')
@@ -64,7 +68,7 @@ class JokesAPI:
     api.add_resource(_ReadCount, '/count')
     api.add_resource(_UpdateLike, '/like/<int:id>')
     api.add_resource(_UpdateJeer, '/jeer/<int:id>')
-    api.add_resource(_ReadBest, '/best')
+    api.add_resource(_ReadWorst, '/worst')
     
 if __name__ == "__main__": 
     # server = "http://127.0.0.1:5000" # run local
