@@ -32,6 +32,11 @@ class JokesAPI:
         def get(self):
             return jsonify(getRandomJoke())
     
+    class _ReadBest(Resource):
+        def get(self):
+            return jsonify(favoriteJoke())
+    
+    
     # getRandomJoke()
     class _ReadCount(Resource):
         def get(self):
@@ -59,6 +64,7 @@ class JokesAPI:
     api.add_resource(_ReadCount, '/count')
     api.add_resource(_UpdateLike, '/like/<int:id>')
     api.add_resource(_UpdateJeer, '/jeer/<int:id>')
+    api.add_resource(_ReadBest, '/best')
     
 if __name__ == "__main__": 
     # server = "http://127.0.0.1:5000" # run local
